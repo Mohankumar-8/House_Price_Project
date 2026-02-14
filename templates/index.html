@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4e73df;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2e59d9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+            font-weight: bold;
+        }
+
+        .info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>🏠  Indian House Price Prediction</h2>
+
+        <form method="POST" action="/predict">
+            <input type="number" name="sqft" placeholder="Enter Square Feet" required>
+            <input type="number" name="bhk" placeholder="Enter BHK" required>
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            Estimated Price: {{ prediction_text }}
+        </div>
+        <div class="info">
+            Category: {{ segment }}
+        </div>
+        {% endif %}
+
+        <div class="info">
+            Model Accuracy: {{ accuracy }}%
+        </div>
+
+        <div class="footer">
+            Developed by S. Mohan Kumar | B.Tech IT <br>
+            Random Forest Based ML System
+        </div>
+    </div>
+</body>
+</html>
